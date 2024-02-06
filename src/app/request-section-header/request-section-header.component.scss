@@ -1,0 +1,26 @@
+.request-section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 50px;
+  .input-section {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+    input {
+      min-height: 40px;
+      min-width: 20%;
+      padding: 10px;
+    }
+    button {
+      background: rgb(98, 98, 235);
+      border: none;
+      color: white;
+      height: 40px;
+      width: 120px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  }
+}

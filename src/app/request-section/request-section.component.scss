@@ -1,0 +1,22 @@
+.request-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 50px;
+  min-height: 100vh;
+  .input-section {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    input {
+      min-height: 40px;
+      min-width: 20%;
+      padding: 10px;
+    }
+  }
+  textarea {
+    height: 70vh;
+    width: 40vw;
+    resize: none;
+  }
+}
