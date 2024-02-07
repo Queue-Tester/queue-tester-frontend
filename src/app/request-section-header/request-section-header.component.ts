@@ -17,9 +17,9 @@ export class RequestSectionHeaderComponent {
     private requestSectionService: RequestSectionService,
     private responseService: ResponseSectionService
   ) {}
-  rabbitmqUrl: string = 'amqp://myuser:mypassword@localhost:5672';
-  queueName: string = 'workspaces';
-  patternName: string = 'testing';
+  rabbitmqUrl: string = '';
+  queueName: string = '';
+  patternName: string = '';
   async onClick() {
     try {
       const apiUrl = this.configService.getApiUrl();
