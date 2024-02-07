@@ -1,27 +1,45 @@
-# RabbitmqTestingFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+# Queue Tester
 
-## Development server
+Tool to test RabbitMQ endpoints
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Running Queue Tester with Docker Compose
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+Deploying Queue Tester services with Docker Compose is straightforward. Follow these steps:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Create a docker-compose.yml file.
+- Copy and paste the following configuration into the file:
 
-## Running unit tests
+```yaml
+services:
+  queue-tester-backend:
+    image: queuetester/queue-tester-backend:latest
+    ports:
+      - '45184:45184'
+    container_name: queue-tester-backend
+    restart: always 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  queue-tester-frontend:
+    image: queuetester/queue-tester-frontend:latest
+    ports:
+      - '4200:80'
+    container_name: queue-tester-frontend
+    restart: always 
+```
 
-## Running end-to-end tests
+  - Run this command:
+  ```bash
+  docker-compose up -d
+  ```
+  - OR
+  ```bash
+  docker compose up -d
+  ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  - To switch to a new version after a new image release, follow these steps:
+  ```bash
+  docker-compose pull 
+  docker-compose up -d
+  ```
