@@ -23,17 +23,16 @@ export class RequestSectionHeaderComponent {
   async onClick() {
     try {
       const apiUrl = this.configService.getApiUrl();
-
       const response: AxiosResponse = await axios.post(
         `${apiUrl}/send-message`,
         {
           rabbitmqUrl: this.rabbitmqUrl,
           queueName: this.queueName,
           patternName: this.patternName,
-          message: this.requestSectionService.message,
+          message: JSON.parse(this.requestSectionService.message),
         }
       );
-      this.responseService.response = response.data;
+      this.responseService.response = JSON.stringify(response.data);
     } catch (error) {
       this.responseService.response = error;
     }
