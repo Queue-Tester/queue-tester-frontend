@@ -3,6 +3,6 @@
     <input type="text" placeholder="Rabbitmq URL" [(ngModel)]="rabbitmqUrl" />
     <input type="text" placeholder="Queue Name" [(ngModel)]="queueName" />
     <input type="text" placeholder="Pattern Name" [(ngModel)]="patternName" />
-    <button (click)="onClick()">Send</button>
+    <button nz-button (click)="onClick()" [nzLoading]="isLoading">Send</button>
   </div>
 </section>

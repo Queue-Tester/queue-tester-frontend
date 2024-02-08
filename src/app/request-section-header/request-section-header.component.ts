@@ -20,8 +20,10 @@ export class RequestSectionHeaderComponent {
   rabbitmqUrl: string = '';
   queueName: string = '';
   patternName: string = '';
+  isLoading: boolean = false;
   async onClick() {
     try {
+      this.isLoading = true;
       const apiUrl = this.configService.getApiUrl();
       const response: AxiosResponse = await axios.post(
         `${apiUrl}/send-message`,
@@ -35,6 +37,8 @@ export class RequestSectionHeaderComponent {
       this.responseService.response = JSON.stringify(response.data);
     } catch (error) {
       this.responseService.response = error;
+    } finally {
+      this.isLoading = false;
     }
   }
 }
